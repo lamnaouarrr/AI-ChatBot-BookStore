@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 import torch
 from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
@@ -27,10 +27,6 @@ model.load_state_dict(model_state)
 model.eval()
 
 bot_name = "Bookie"
-
-@app.route('/')
-def index():
-    return render_template('chatbot.html')
 
 @app.route('/chatbot', methods=['POST'])
 def chatbot_response():
