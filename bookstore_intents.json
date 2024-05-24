@@ -1,346 +1,280 @@
 {
-    "intents": [
+  "intents": [
       {
-        "tag": "greeting",
+          "tag": "greeting",
+          "patterns": ["Hi", "Hey", "Hello", "Good morning", "Good afternoon", "Good evening", "How are you?", "Is anyone there?", "Greetings", "What's up?", "Howdy", "Hello there"],
+          "responses": ["Hello! How can I assist you today?", "Hi there, welcome to our bookstore!", "Hey! What can I help you with?", "Good day! How can I help you?", "Greetings! How may I assist you?", "Hello! Looking for a book?", "Hi! How can I make your day better?"]
+      },
+      {
+          "tag": "author_search",
+          "patterns": [
+              "I'm looking for books by George Orwell", 
+              "Do you have any books by George Orwell", 
+              "Show me books written by George Orwell", 
+              "I want to find books by George Orwell", 
+              "Can you tell me about books by George Orwell", 
+              "Do you carry books by George Orwell", 
+              "I need books from George Orwell", 
+              "Any books by George Orwell"
+          ],
+          "responses": ["We definitely have books by {author}. Here are some: {author_books}."]
+      },
+      {
+          "tag": "general_inquiry",
+          "patterns": ["What do you have?", "What books do you have?", "Tell me about your bookstore", "What can I find here?", "What do you offer?", "What kind of books do you have?"],
+          "responses": ["We offer a wide variety of books across many genres including fiction, non-fiction, mystery, romance, science fiction, fantasy, and more. How can I assist you further?", "Our bookstore has a diverse collection of books ranging from bestsellers to classics in various genres. What are you looking for?", "You can find books in many genres such as fiction, non-fiction, mystery, romance, science fiction, and more. How can I help you today?"]
+      },
+      {
+          "tag": "goodbye",
+          "patterns": ["Bye", "See you later", "Goodbye", "Take care", "Catch you later", "I’m leaving", "Have a nice day", "Bye bye", "See you"],
+          "responses": ["Goodbye! Have a great day!", "See you later, thanks for visiting!", "Take care! Come back soon.", "Bye! Hope to see you again.", "Farewell! Have a wonderful day!", "Bye! Don't forget to visit us again."]
+      },
+      {
+          "tag": "thanks",
+          "patterns": ["Thanks", "Thank you", "Thanks a lot", "I appreciate it", "Thank you very much", "That's helpful", "Thanks a bunch", "Much appreciated", "Thank you so much"],
+          "responses": ["You're welcome!", "Happy to help!", "Anytime!", "Glad I could assist you.", "You're most welcome!", "It was my pleasure!", "I'm happy to help!"]
+      },
+      {
+          "tag": "book_search",
+          "patterns": [
+              "I'm looking for a book", 
+              "Can you help me find a book?", 
+              "Do you have a book on", 
+              "I need a book about", 
+              "Show me books about", 
+              "I want to read something on", 
+              "Can you recommend a book on", 
+              "Do you have information on", 
+              "I'm searching for a book on", 
+              "Can you suggest a book about"
+          ],
+          "responses": ["Sure, what topic or genre are you interested in?", "Of course! Can you tell me the title or author?", "I'd be happy to help. What book are you looking for?", "Certainly, let me know what you're looking for.", "I'd love to assist. What genre or topic do you have in mind?", "Absolutely! Any specific title or author?"]
+      },
+      {
+          "tag": "genre_search",
+          "patterns": [
+              "I want to read a fiction book", 
+              "Show me some non-fiction books", 
+              "Do you have any mystery novels?", 
+              "Can you recommend a science fiction book?", 
+              "I'm interested in romance novels", 
+              "Any good fantasy books?", 
+              "Do you have horror stories?", 
+              "I'm looking for historical fiction", 
+              "Do you have any thrillers?", 
+              "Show me some biographies", 
+              "Can you suggest a comedy book?", 
+              "I want a history book", 
+              "I'm looking for a history book", 
+              "Do you have any history books?", 
+              "Recommend me some history books"
+          ],
+          "responses": ["We have a wide selection of {genre} books. Any specific titles you're looking for?", "Sure, here are some popular {genre} books.", "Yes, we have many {genre} books. Let me list a few for you.", "Certainly, {genre} is one of our specialties. Here are some recommendations.", "We have a great collection of {genre} books. Looking for anything specific?", "Absolutely! Here are some top {genre} picks."]
+      },
+      {
+          "tag": "recommendation",
+          "patterns": [
+              "Can you recommend a book?", 
+              "What should I read next?", 
+              "Do you have any book recommendations?", 
+              "I'm looking for a good book to read", 
+              "Suggest me a book", 
+              "What do you suggest I read?", 
+              "Any good book suggestions?", 
+              "Can you recommend something to read?", 
+              "What are your top book recommendations?"
+          ],
+          "responses": ["I'd love to recommend a book. What genres do you enjoy?", "Sure, here are some of our bestsellers: {book_list}.", "Of course! Have you read {book}? It's highly recommended.", "Definitely! Based on your interests, you might enjoy {book}.", "I have a great suggestion for you. Have you read {book}?", "You might like {book}. It's one of our top picks."]
+      },
+      {
+          "tag": "pricing",
+          "patterns": [
+              "How much does this book cost?", 
+              "What's the price of this book?", 
+              "Can you tell me the price of", 
+              "How much is", 
+              "What is the cost of", 
+              "What's the price for", 
+              "Can you tell me how much it costs?"
+          ],
+          "responses": ["The price of {book} is {price}.", "This book costs {price}.", "The current price for {book} is {price}.", "{book} is available for {price}.", "It costs {price} for {book}.", "You can get {book} for {price}."]
+      },
+      {
+          "tag": "availability",
+          "patterns": [
+              "Is this book available?", 
+              "Do you have this book in stock?", 
+              "Can I buy this book now?", 
+              "Is {book} currently available?", 
+              "Do you have {book} right now?", 
+              "Is it possible to get {book} now?", 
+              "Can I find {book} in your store?"
+          ],
+          "responses": ["Yes, {book} is available.", "Currently, {book} is in stock.", "We do have {book} available for purchase.", "{book} is available. Would you like to order it now?", "Yes, we have {book} in stock.", "Indeed, {book} is available."]
+      },
+      {
+          "tag": "order_status",
+          "patterns": [
+              "Where is my order?", 
+              "Can you tell me the status of my order?", 
+              "When will my order arrive?", 
+              "Is my order on the way?", 
+              "I want to track my order", 
+              "What's the status of my order?", 
+              "Can you check my order status?"
+          ],
+          "responses": ["Can you please provide your order number?", "I'd be happy to check the status of your order. Can you give me your order details?", "Sure, let me look up your order status. What's your order number?", "Of course, please share your order number so I can check.", "Please provide your order details to track the status.", "I'll need your order number to check the status."]
+      },
+      {
+          "tag": "returns",
+          "patterns": [
+              "I want to return a book", 
+              "Can I return this book?", 
+              "How do I return a purchase?", 
+              "What is your return policy?", 
+              "I need to return an item", 
+              "Can I get a refund?", 
+              "How can I return my order?"
+          ],
+          "responses": ["You can return the book within 30 days of purchase. Please keep the receipt.", "Our return policy allows returns within 30 days with a receipt.", "To return a book, please visit our returns section or contact customer service.", "Returns are accepted within 30 days of purchase. Do you have the receipt?", "You can initiate a return within 30 days of your purchase.", "Please visit our returns section for instructions on returning an item."]
+      },
+      {
+        "tag": "payment",
         "patterns": [
-          "Hi",
-          "Hey",
-          "Hello",
-          "Good morning",
-          "Good afternoon",
-          "Good evening",
-          "How are you?",
-          "Is anyone there?"
+            "What payment methods do you accept?", 
+            "How can I pay?", 
+            "Do you accept credit cards?", 
+            "Do you accept PayPal?", 
+            "How can I make a payment?"
         ],
         "responses": [
-          "Hello! How can I assist you today?",
-          "Hi there, welcome to our bookstore!",
-          "Hey! What can I help you with?",
-          "Good day! How can I help you?"
+            "We accept multiple payment methods including credit/debit cards and PayPal."
         ]
       },
       {
-        "tag": "goodbye",
-        "patterns": [
-          "Bye",
-          "See you later",
-          "Goodbye",
-          "Take care",
-          "Catch you later"
-        ],
-        "responses": [
-          "Goodbye! Have a great day!",
-          "See you later, thanks for visiting!",
-          "Take care! Come back soon.",
-          "Bye! Hope to see you again."
-        ]
-      },
-      {
-        "tag": "thanks",
-        "patterns": [
-          "Thanks",
-          "Thank you",
-          "Thanks a lot",
-          "I appreciate it",
-          "Thank you very much",
-          "That's helpful"
-        ],
-        "responses": [
-          "You're welcome!",
-          "Happy to help!",
-          "Anytime!",
-          "Glad I could assist you."
-        ]
-      },
-      {
-        "tag": "book_search",
-        "patterns": [
-          "I'm looking for a book",
-          "Can you help me find a book?",
-          "Do you have a book on",
-          "I need a book about",
-          "Show me books about",
-          "I want to read something on"
-        ],
-        "responses": [
-          "Sure, what topic or genre are you interested in?",
-          "Of course! Can you tell me the title or author?",
-          "I'd be happy to help. What book are you looking for?",
-          "Certainly, let me know what you're looking for."
-        ]
-      },
-      {
-        "tag": "author_search",
-        "patterns": [
-          "I'm looking for books by",
-          "Do you have any books by",
-          "Show me books written by",
-          "I want to find books by"
-        ],
-        "responses": [
-          "Sure, we have several books by {author}.",
-          "Yes, we have books by {author}. Do you have a specific title in mind?",
-          "We definitely have books by {author}. Let me show you some.",
-          "Certainly! {author} is a great writer. Here are some books by them."
-        ]
-      },
-      {
-        "tag": "genre_search",
-        "patterns": [
-          "I want to read a fiction book",
-          "Show me some non-fiction books",
-          "Do you have any mystery novels?",
-          "Can you recommend a science fiction book?",
-          "I'm interested in romance novels"
-        ],
-        "responses": [
-          "We have a wide selection of {genre} books. Any specific titles you're looking for?",
-          "Sure, here are some popular {genre} books.",
-          "Yes, we have many {genre} books. Let me list a few for you.",
-          "Certainly, {genre} is one of our specialties. Here are some recommendations."
-        ]
-      },
-      {
-        "tag": "recommendation",
-        "patterns": [
-          "Can you recommend a book?",
-          "What should I read next?",
-          "Do you have any book recommendations?",
-          "I'm looking for a good book to read",
-          "Suggest me a book"
-        ],
-        "responses": [
-          "I'd love to recommend a book. What genres do you enjoy?",
-          "Sure, here are some of our bestsellers: {book_list}.",
-          "Of course! Have you read {book}? It's highly recommended.",
-          "Definitely! Based on your interests, you might enjoy {book}."
-        ]
-      },
-      {
-        "tag": "pricing",
-        "patterns": [
-          "How much does this book cost?",
-          "What's the price of this book?",
-          "Can you tell me the price of",
-          "How much is",
-          "What is the cost of"
-        ],
-        "responses": [
-          "The price of {book} is {price}.",
-          "This book costs {price}.",
-          "The current price for {book} is {price}.",
-          "{book} is available for {price}."
-        ]
-      },
-      {
-        "tag": "availability",
-        "patterns": [
-          "Is this book available?",
-          "Do you have this book in stock?",
-          "Can I buy this book now?",
-          "Is {book} currently available?",
-          "Do you have {book} right now?"
-        ],
-        "responses": [
-          "Yes, {book} is available.",
-          "Currently, {book} is in stock.",
-          "We do have {book} available for purchase.",
-          "{book} is available. Would you like to order it now?"
-        ]
-      },
-      {
-        "tag": "order_status",
-        "patterns": [
-          "Where is my order?",
-          "Can you tell me the status of my order?",
-          "When will my order arrive?",
-          "Is my order on the way?",
-          "I want to track my order"
-        ],
-        "responses": [
-          "Can you please provide your order number?",
-          "I'd be happy to check the status of your order. Can you give me your order details?",
-          "Sure, let me look up your order status. What's your order number?",
-          "Of course, please share your order number so I can check."
-        ]
-      },
-      {
-        "tag": "returns",
-        "patterns": [
-          "I want to return a book",
-          "Can I return this book?",
-          "How do I return a purchase?",
-          "What is your return policy?",
-          "I need to return an item"
-        ],
-        "responses": [
-          "You can return the book within 30 days of purchase. Please keep the receipt.",
-          "Our return policy allows returns within 30 days with a receipt.",
-          "To return a book, please visit our returns section or contact customer service.",
-          "Returns are accepted within 30 days of purchase. Do you have the receipt?"
-        ]
-      },
-      {
-        "tag": "payments",
-        "patterns": [
-          "Do you accept credit cards?",
-          "Can I pay with PayPal?",
-          "What payment methods do you accept?",
-          "Is cash on delivery available?",
-          "Do you take debit cards?"
-        ],
-        "responses": [
-          "We accept credit cards, debit cards, and PayPal.",
-          "Yes, you can pay with credit cards, debit cards, or PayPal.",
-          "We accept multiple payment methods including credit/debit cards and PayPal.",
-          "Currently, we do not offer cash on delivery. You can use credit/debit cards or PayPal."
-        ]
-      },
-      {
-        "tag": "store_hours",
-        "patterns": [
-          "What are your store hours?",
-          "When are you open?",
-          "What time do you open?",
-          "What time do you close?",
-          "Are you open on weekends?"
-        ],
-        "responses": [
-          "Our store hours are from 9 AM to 9 PM, Monday to Saturday. We're closed on Sundays.",
-          "We are open from 9 AM to 9 PM on weekdays and Saturdays.",
-          "Our bookstore operates from 9 AM to 9 PM, Monday through Saturday.",
-          "We are open from 9 AM to 9 PM, except on Sundays."
-        ]
+          "tag": "store_hours",
+          "patterns": [
+              "What are your store hours?", 
+              "When are you open?", 
+              "What time do you open?", 
+              "What time do you close?", 
+              "Are you open on weekends?", 
+              "What are your opening hours?", 
+              "When does the store close?"
+          ],
+          "responses": ["Our store hours are from 9 AM to 9 PM, Monday to Saturday. We're closed on Sundays.", "We are open from 9 AM to 9 PM on weekdays and Saturdays.", "Our bookstore operates from 9 AM to 9 PM, Monday through Saturday.", "We are open from 9 AM to 9 PM, except on Sundays.", "Our opening hours are 9 AM to 9 PM, Monday to Saturday.", "We close at 9 PM and open at 9 AM from Monday to Saturday."]
       },
       {
         "tag": "shipping",
-        "patterns": [
-          "Do you ship internationally?",
-          "How much is shipping?",
-          "What are your shipping options?",
-          "How long does shipping take?",
-          "Can I get expedited shipping?"
-        ],
-        "responses": [
-          "Yes, we ship internationally. Shipping costs vary based on location.",
-          "Shipping costs depend on the delivery location and the shipping option chosen.",
-          "We offer standard, express, and overnight shipping. Costs vary by option.",
-          "Standard shipping takes 5-7 business days. Expedited options are available at an extra cost.",
-          "Yes, expedited shipping is available. Please choose your preferred option at checkout."
-        ]
+            "patterns": [
+                "Do you ship internationally?", 
+                "How much is shipping?", 
+                "What are your shipping options?", 
+                "How long does shipping take?", 
+                "Can I get expedited shipping?", 
+                "Do you offer free shipping?", 
+                "What are the delivery charges?"
+            ],
+            "responses": [
+                "We offer standard, express, and overnight shipping. Costs vary by option.",
+                "Standard shipping takes 5-7 business days. Expedited options are available at an extra cost.",
+                "Yes, we ship internationally. Shipping costs vary based on location.",
+                "Free shipping is available on orders over a certain amount. Check our shipping policy for details."
+            ]
       },
       {
-        "tag": "promotions",
-        "patterns": [
-          "Are there any promotions?",
-          "Do you have any discounts?",
-          "What are the current deals?",
-          "Are there any offers on books?",
-          "Do you have any sales going on?"
-        ],
-        "responses": [
-          "We have a 10% discount on bestsellers this week.",
-          "Currently, we are offering a buy one get one free on selected titles.",
-          "Yes, we have various promotions. Please check our promotions page for details.",
-          "We have ongoing discounts on selected genres. Visit our promotions section for more info."
-        ]
+          "tag": "promotions",
+          "patterns": [
+              "Are there any promotions?", 
+              "Do you have any discounts?", 
+              "What are the current deals?", 
+              "Are there any offers on books?", 
+              "Do you have any sales going on?", 
+              "Any special offers today?", 
+              "What discounts do you have?"
+          ],
+          "responses": [
+              "We have a 10% discount on bestsellers this week.",
+              "Currently, we are offering a buy one get one free on selected titles.",
+              "Yes, we have various promotions. Please check our promotions page for details.",
+              "We have ongoing discounts on selected genres. Visit our promotions section for more info.",
+              "This week, we have special offers on bestsellers and new arrivals.",
+              "Check out our promotions page for the latest deals and discounts."]
       },
       {
         "tag": "new_arrivals",
         "patterns": [
-          "What are the new arrivals?",
-          "Show me the latest books",
-          "Do you have any new books?",
-          "What are the newest releases?",
-          "Any new arrivals this week?"
+            "What are the new arrivals?", 
+            "Do you have any new books?", 
+            "What's new in the store?", 
+            "What are the latest books?"
         ],
         "responses": [
-          "Here are our latest arrivals: {new_books_list}.",
-          "Check out our newest releases: {new_books_list}.",
-          "Yes, we have new books in our collection. Here are some: {new_books_list}.",
-          "These are the latest books we have: {new_books_list}."
+            "These are the latest books we have: {new_books_list}."
         ]
       },
       {
-        "tag": "bestsellers",
-        "patterns": [
-          "What are the bestsellers?",
-          "Show me the top-selling books",
-          "Which books are popular?",
-          "What are the best-selling books?",
-          "Any top-selling books this month?"
-        ],
-        "responses": [
-          "Here are our current bestsellers: {bestsellers_list}.",
-          "These are the top-selling books right now: {bestsellers_list}.",
-          "Check out our most popular books: {bestsellers_list}.",
-          "These books are our bestsellers: {bestsellers_list}."
-        ]
+          "tag": "bestsellers",
+          "patterns": [
+              "What are the bestsellers?", 
+              "Show me the top-selling books", 
+              "Which books are popular?", 
+              "What are the best-selling books?", 
+              "Any top-selling books this month?", 
+              "What are the most popular books?"
+          ],
+          "responses": ["Here are our current bestsellers: {bestsellers_list}.", "These are the top-selling books right now: {bestsellers_list}.", "Check out our most popular books: {bestsellers_list}.", "These books are our bestsellers: {bestsellers_list}.", "Our bestsellers include: {bestsellers_list}.", "Top-selling books this month are: {bestsellers_list}."]
       },
       {
-        "tag": "pre_order",
-        "patterns": [
-          "Can I pre-order a book?",
-          "How do I pre-order a book?",
-          "Is it possible to pre-order?",
-          "Can I place a pre-order for an upcoming release?",
-          "Do you accept pre-orders?"
-        ],
-        "responses": [
-          "Yes, you can pre-order upcoming releases. Please check our pre-order section.",
-          "We do accept pre-orders. Visit our pre-order page for more details.",
-          "Certainly! You can place a pre-order for upcoming books. Here’s how: {pre_order_instructions}.",
-          "Pre-orders are available for selected titles. Check out our pre-order section."
-        ]
+          "tag": "pre_order",
+          "patterns": [
+              "Can I pre-order a book?", 
+              "How do I pre-order a book?", 
+              "Is it possible to pre-order?", 
+              "Can I place a pre-order for an upcoming release?", 
+              "Do you accept pre-orders?", 
+              "How can I pre-order a new book?"
+          ],
+          "responses": ["Yes, you can pre-order upcoming releases. Please check our pre-order section.", "We do accept pre-orders. Visit our pre-order page for more details.", "Certainly! You can place a pre-order for upcoming books. Here’s how: {pre_order_instructions}.", "Pre-orders are available for selected titles. Check out our pre-order section.", "You can pre-order books from our upcoming releases section.", "Visit our pre-order page for instructions on placing a pre-order."]
       },
       {
-        "tag": "membership",
-        "patterns": [
-          "Do you have a membership program?",
-          "What are the benefits of your membership?",
-          "How do I join the membership program?",
-          "Tell me about your membership",
-          "Is there a membership for frequent buyers?"
-        ],
-        "responses": [
-          "Yes, we have a membership program with various benefits. Check our membership page for details.",
-          "Our membership program offers discounts, early access to new arrivals, and more. Join today!",
-          "You can join our membership program online. Visit our membership section for more info.",
-          "Members enjoy exclusive deals, discounts, and special offers. Sign up on our membership page."
-        ]
+          "tag": "membership",
+          "patterns": [
+              "Do you have a membership program?", 
+              "What are the benefits of your membership?", 
+              "How do I join the membership program?", 
+              "Tell me about your membership", 
+              "Is there a membership for frequent buyers?", 
+              "How can I become a member?", 
+              "What are the perks of your membership?"
+          ],
+          "responses": ["Yes, we have a membership program with various benefits. Check our membership page for details.", "Our membership program offers discounts, early access to new arrivals, and more. Join today!", "You can join our membership program online. Visit our membership section for more info.", "Members enjoy exclusive deals, discounts, and special offers. Sign up on our membership page.", "Join our membership program for perks like discounts and early access to new releases.", "Visit our membership page to learn more about the benefits and to join."]
       },
       {
-        "tag": "gift_cards",
-        "patterns": [
-          "Do you sell gift cards?",
-          "Can I buy a gift card?",
-          "How do I purchase a gift card?",
-          "Are gift cards available?",
-          "Tell me about your gift cards"
-        ],
-        "responses": [
-          "Yes, we offer gift cards. You can purchase them on our gift cards page.",
-          "Gift cards are available for purchase. Visit our gift cards section for more information.",
-          "You can buy gift cards online or in-store. Check our website for details.",
-          "Our gift cards are perfect for book lovers. Purchase them on our gift cards page."
-        ]
+          "tag": "gift_cards",
+          "patterns": [
+              "Do you sell gift cards?", 
+              "Can I buy a gift card?", 
+              "How do I purchase a gift card?", 
+              "Are gift cards available?", 
+              "Tell me about your gift cards", 
+              "Can I get a gift card?", 
+              "Do you offer gift cards?"
+          ],
+          "responses": ["Yes, we offer gift cards. You can purchase them on our gift cards page.", "Gift cards are available for purchase. Visit our gift cards section for more information.", "You can buy gift cards online or in-store. Check our website for details.", "Our gift cards are perfect for book lovers. Purchase them on our gift cards page.", "We have gift cards available for various amounts. Visit our gift cards page for details.", "Gift cards can be purchased on our website or in-store."]
       },
       {
-        "tag": "book_club",
-        "patterns": [
-          "Do you have a book club?",
-          "How can I join the book club?",
-          "Tell me about your book club",
-          "Is there a book club I can join?",
-          "What is your book club about?"
-        ],
-        "responses": [
-          "Yes, we have a book club that meets monthly. Join us for discussions and more.",
-          "Our book club is open to all. Visit our book club page for details on how to join.",
-          "You can join our book club online. We discuss a new book every month.",
-          "Join our book club for engaging discussions and events. Check our website for more info."
-        ]
+          "tag": "book_club",
+          "patterns": [
+              "Do you have a book club?", 
+              "How can I join the book club?", 
+              "Tell me about your book club", 
+              "Is there a book club I can join?", 
+              "What is your book club about?", 
+              "Can I become a member of the book club?", 
+              "What does your book club offer?"
+          ],
+          "responses": ["Yes, we have a book club that meets monthly. Join us for discussions and more.", "Our book club is open to all. Visit our book club page for details on how to join.", "You can join our book club online. We discuss a new book every month.", "Join our book club for engaging discussions and events. Check our website for more info.", "Our book club offers monthly discussions and special events. Visit our book club page to join.", "Become a member of our book club for monthly meetings and book discussions."]
       }
-    ]
-  }
-  
+  ]
+}
